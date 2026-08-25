@@ -28,5 +28,12 @@ db.students.updateOne(
 // DELETE OPERATION
 db.students.deleteOne({name: "shanu"})
 
+// find number of documents
+db.students.countDocuments() // db.students.countDocuments({})
 
+// increment age of all student by 4
+db.students.updateMany({}, {$inc: {age: 4}}) // $inc for increment
+
+// delete whose age > 30
+db.students.deleteMany({age: {$gt : 30}})
 db.students.find()

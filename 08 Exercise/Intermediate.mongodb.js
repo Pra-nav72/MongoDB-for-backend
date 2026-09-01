@@ -74,3 +74,60 @@ db.products.updateOne({name: 'Gaming Laptop'}, {
 })
 
 db.products.find()
+
+
+
+
+
+
+/**         Intermediate to Advance Problems */
+
+// 41. find all orders placed by user Rahul
+db.orders.find({
+    user: {
+        $regex: /rahul/i  // i==> case insesitive
+    }
+})
+
+// 42. find orders whose total amount > 5000
+db.orders.find({totalAmount: {$gt: 5000}})
+
+
+// 43. find order placed after 1 january
+db.orders.find({
+    orderDate: {$gt: new Date('2025-01-01')}
+})
+
+// 44. find order with status delivered
+db.orders.find({status: 'delivered'})
+
+
+// 45. find orders which are not cancelled
+db.orders.find({status: {$ne: 'cancelled'}})
+
+
+// 46. increase product price by 10%
+// db.products.updateMany({}, {$mul: {price: 1.10}})
+
+// 47. increate product stock by 50
+// db.products.updateMany({}, {$inc: {stock: 50}})
+
+// 48.rename "price" to "productPrice"
+// db.products.updateMany({}, {$rename: {'price': 'productPrice'}})
+
+// 49. remove discount field from the product
+// db.products.updateMany({}, {$unset: {discount: ""}})
+
+
+// 50. add field 'featured: true' to products
+db.products.updateMany({},{$set: {featured: true}})
+
+
+// 51. delete product where stock is 0
+db.products.deleteMany({stock: 0})
+
+
+// 52. delete user who never placed any order
+db.orders.find()
+
+// db.products.find()
